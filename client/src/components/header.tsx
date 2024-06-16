@@ -13,12 +13,13 @@ export const Header = () => {
         <header className="py-6">
             <div className="flex container items-center justify-between">
                 <Link to="/signin" className="text-3xl font-bold tracking-tight">finz</Link>
-                <div className="flex items-center">
-                    {
-                        isLoadingUser ? (
-                            <LoaderCircleIcon className="h-4 w-4 animate-spin" />
-                        ): (
-                            user ? (
+                {
+                    isLoadingUser ? (
+                        <LoaderCircleIcon className="h-4 w-4 animate-spin" />
+                    ): (
+                        user ? (
+                            <div className="flex items-center gap-6">
+                                <Link to="/dashboard">Dashboard</Link>
                                 <Button disabled={isPending} onClick={() => mutate(undefined, {
                                     onSuccess: async () => {
                                         await queryClient.invalidateQueries({
@@ -26,14 +27,14 @@ export const Header = () => {
                                         })
                                     }
                                 })}>Log out</Button>
-                            ): (
-                                <Button variant="ghost" asChild>
-                                    <Link to="/signin">Log in</Link>
-                                </Button>
-                            )
+                            </div>
+                        ): (
+                            <Button variant="ghost" asChild>
+                                <Link to="/signin">Log in</Link>
+                            </Button>
                         )
-                    }
-                </div>
+                    )
+                }
             </div>
         </header>
     )

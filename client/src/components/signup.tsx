@@ -35,7 +35,7 @@ export const Signup = () => {
         createUser(data, {
             onSuccess: () => {
                 queryClient.invalidateQueries({ queryKey: [ "getUser" ]})
-                navigate("/send")
+                navigate("/dashboard")
             },
             onError: (error) => {
                 toast.error(error.message)

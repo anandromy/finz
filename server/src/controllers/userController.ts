@@ -97,6 +97,7 @@ const getAllUsers = async(req: Request, res: Response) => {
 
         res.json({ users: 
             users.map((user) => ({
+                id: user._id,
                 email: user.email,
                 firstName: user.firstName,
                 lastName: user.lastName

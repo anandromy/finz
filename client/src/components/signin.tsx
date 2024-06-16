@@ -24,7 +24,7 @@ export const Signin = () => {
         mutate(data, {
             onSuccess: () => {
                 queryClient.invalidateQueries({ queryKey: ["getUser"]})
-                navigate("/send")
+                navigate("/dashboard")
             },
             onError: (error) => {
                 toast.error(error.message)
